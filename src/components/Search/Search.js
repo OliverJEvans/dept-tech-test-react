@@ -1,7 +1,16 @@
 import React from 'react';
 
-const Search = () => (
-  <h1>Search</h1>
+const Search = ({
+  cities
+}) => (
+  <>
+    <h1>Search</h1>
+    <ul>
+      {cities.map((city) => (
+        <li>{city.name}</li>
+      ))}
+    </ul>
+  </>
 );
 
 export default Search;
