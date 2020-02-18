@@ -14,12 +14,11 @@ export const getCitiesFailure = (error) => ({
   error,
 });
 
-export const getCities = (city) => (dispatch) => {
+export const getCities = () => (dispatch) => {
   dispatch(getCitiesRequest());
 
   axios.get('https://api.openaq.org/v1/cities?country=GB')
     .then((response) => {
-      console.log(response);
       dispatch(getCitiesSuccess(response.data.results));
     })
     .catch((error) => {

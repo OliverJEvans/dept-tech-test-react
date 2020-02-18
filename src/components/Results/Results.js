@@ -1,4 +1,5 @@
 import React from 'react';
+import './Results.scss';
 
 const Results = ({
   pinnedResults
@@ -7,7 +8,7 @@ const Results = ({
     <h1>Results</h1>
     <ul>
       {pinnedResults.map((location) => (
-        <li>Result</li>
+        <li key="uniqueKey">Result</li>
       ))}
     </ul>
   </>

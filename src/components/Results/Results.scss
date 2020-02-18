@@ -1,0 +1,102 @@
+.results {
+  margin: 80px 0 0;
+  padding: 0;
+  list-style: none;
+
+  @media (min-width: 670px) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  &__item {
+    color: #171e42;
+
+    @media (min-width: 670px) {
+      flex: 0 0 50%;
+    }
+  }
+}
+
+.item {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 15px 30px;
+  position: relative;
+  margin: 20px 0px;
+
+  @media (min-width: 670px) {
+    margin: 20px 10px;
+  }
+}
+
+h2 {
+  color: #7738af;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  height: 20px;
+  width: 20px;
+  background-image: url('../../assets/close.svg');
+  border: none;
+  cursor: pointer;
+
+  span {
+    //.visually-hidden
+    position: absolute !important;
+    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px, 1px, 1px, 1px);
+    padding:0 !important;
+    border:0 !important;
+    height: 1px !important;
+    width: 1px !important;
+    overflow: hidden;
+  }
+}
+
+.measurements {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: inline;
+
+  &__item {
+    display: inline;
+  }
+}
+
+.timestamp {
+  text-transform: uppercase;
+}
+
+.results__item--loading {
+  .timestamp, .heading, .location, .measurements {
+    display: block;
+    background: #f3f3f3;
+  }
+
+  .timestamp {
+    height: 20px;
+    width: 200px;
+  }
+
+  h2 {
+    height: 30px;
+    width: 300px;
+  }
+
+  .location {
+    height: 20px;
+    width: 250px;
+  }
+
+  .measurements {
+    height: 20px;
+    width: 200px;
+    margin-bottom: 6px;
+  }
+
+}
