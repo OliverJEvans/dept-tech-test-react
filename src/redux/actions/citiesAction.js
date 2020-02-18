@@ -25,4 +25,3 @@ export const getCities = () => (dispatch) => {
       dispatch(getCitiesFailure(error.message));
     });
 };
-

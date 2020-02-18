@@ -1,4 +1,3 @@
-
 export const GET_CITIES_REQUEST = 'GET_CITIES_REQUEST';
 export const GET_CITIES_SUCCESS = 'GET_CITIES_SUCCESS';
 export const GET_CITIES_FAILURE = 'GET_CITIES_FAILURE';
@@ -35,7 +34,7 @@ export default function WeatherRedux(state, action) {
       return {
         ...state,
         searchedCity: action.value,
-      }
+      };
     default:
       return state;
   }

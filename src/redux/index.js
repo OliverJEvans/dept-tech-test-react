@@ -5,7 +5,7 @@ import {
   compose,
 } from 'redux';
 import thunk from 'redux-thunk';
-import AirQualityRedux from './reducers/airQualityRedux'
+import AirQualityRedux from './reducers/airQualityRedux';
 
 const rootReducers = combineReducers({
   airQuality: AirQualityRedux,

@@ -1,18 +1,19 @@
 import React from 'react';
 import clsx from 'clsx';
+import PropTypes from 'prop-types';
 import './Search.scss';
 
 const Search = ({
   cities,
   handleChange,
   searchedCity,
-}) => {
-  return (
+}) => (
   <>
     <div className={clsx({
-      "search__wrapper": true,
-      "search__wrapper--open": searchedCity !== '',
-    })}>
+      search__wrapper: true,
+      'search__wrapper--open': searchedCity !== '',
+    })}
+    >
       <div className="input__wrapper">
         <input
           type="search"
@@ -25,14 +26,25 @@ const Search = ({
         <ul className="search__results">
           {cities.map((city) => (
             <li key={city.name}>
-              <button>{city.name}</button>
+              <button type="submit">{city.name}</button>
             </li>
           ))}
         </ul>
       )}
     </div>
   </>
-  );
+);
+
+Search.defaultProps = {
+  cities: [],
+  searchedCity: '',
+};
+
+Search.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  cities: PropTypes.array,
+  searchedCity: PropTypes.string,
+  handleChange: PropTypes.func.isRequired,
 };
 
 export default Search;
