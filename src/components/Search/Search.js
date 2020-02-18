@@ -41,8 +41,15 @@ Search.defaultProps = {
 };
 
 Search.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  cities: PropTypes.array,
+  cities: PropTypes.arrayOf(
+    PropTypes.shape({
+      country: PropTypes.string,
+      name: PropTypes.string.isRequired,
+      city: PropTypes.string,
+      count: PropTypes.number,
+      locations: PropTypes.number,
+    }).isRequired,
+  ),
   searchedCity: PropTypes.string,
   handleChange: PropTypes.func.isRequired,
 };

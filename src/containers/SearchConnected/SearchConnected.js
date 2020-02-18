@@ -52,8 +52,15 @@ SearchConnected.defaultProps = {
 
 SearchConnected.propTypes = {
   fetchCities: PropTypes.func.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  filteredCities: PropTypes.array,
+  filteredCities: PropTypes.arrayOf(
+    PropTypes.shape({
+      country: PropTypes.string,
+      name: PropTypes.string.isRequired,
+      city: PropTypes.string,
+      count: PropTypes.number,
+      locations: PropTypes.number,
+    }).isRequired,
+  ),
   filterCities: PropTypes.func.isRequired,
   searchedCity: PropTypes.string,
 };
