@@ -7,6 +7,7 @@ const Search = ({
   cities,
   handleChange,
   searchedCity,
+  handleClick,
 }) => (
   <>
     <div className={clsx({
@@ -26,7 +27,7 @@ const Search = ({
         <ul className="search__results">
           {cities.map((city) => (
             <li key={city.name}>
-              <button type="submit">{city.name}</button>
+              <button type="button" onClick={() => handleClick(city)}>{city.name}</button>
             </li>
           ))}
         </ul>
@@ -51,6 +52,7 @@ Search.propTypes = {
     }).isRequired,
   ),
   searchedCity: PropTypes.string,
+  handleClick: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
 };
 

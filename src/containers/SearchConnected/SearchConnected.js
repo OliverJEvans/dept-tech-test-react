@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Search from '../../components/Search/Search';
 import { getCities } from '../../redux/actions/citiesAction';
+import { getQuality } from '../../redux/actions/airQualityAction';
 import { SET_SEARCHED_CITY } from '../../redux/reducers/airQualityRedux';
 
 const SearchConnected = ({
@@ -10,6 +11,7 @@ const SearchConnected = ({
   filteredCities,
   filterCities,
   searchedCity,
+  pinLocation,
 }) => {
   useEffect(() => {
     fetchCities();
@@ -20,6 +22,7 @@ const SearchConnected = ({
       cities={filteredCities}
       handleChange={filterCities}
       searchedCity={searchedCity}
+      handleClick={pinLocation}
     />
   );
 };
@@ -43,6 +46,9 @@ const mapDispatchToProps = (dispatch) => ({
       value: e.target.value,
     });
   },
+  pinLocation: (value) => {
+    dispatch(getQuality(value));
+  },
 });
 
 SearchConnected.defaultProps = {
@@ -63,6 +69,7 @@ SearchConnected.propTypes = {
   ),
   filterCities: PropTypes.func.isRequired,
   searchedCity: PropTypes.string,
+  pinLocation: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchConnected);

@@ -2,12 +2,15 @@ export const GET_CITIES_REQUEST = 'GET_CITIES_REQUEST';
 export const GET_CITIES_SUCCESS = 'GET_CITIES_SUCCESS';
 export const GET_CITIES_FAILURE = 'GET_CITIES_FAILURE';
 export const SET_SEARCHED_CITY = 'SET_SEARCHED_CITY';
+export const GET_QUALITY_REQUEST = 'GET_QUALITY_REQUEST';
+export const GET_QUALITY_SUCCESS = 'GET_QUALITY_SUCCESS';
+export const GET_QUALITY_FAILURE = 'GET_QUALITY_FAILURE';
 
 const DEFAULT_STATE = {
   loadingCities: false,
   error: '',
   cities: [],
-  pinnedResults: [{}],
+  pinnedResults: [],
   searchedCity: '',
 };
 
@@ -34,6 +37,19 @@ export default function WeatherRedux(state, action) {
       return {
         ...state,
         searchedCity: action.value,
+      };
+    case GET_QUALITY_REQUEST:
+      return {
+        ...state,
+      };
+    case GET_QUALITY_FAILURE:
+      return {
+        ...state,
+      };
+    case GET_QUALITY_SUCCESS:
+      return {
+        ...state,
+        pinnedResults: [...state.pinnedResults, action.result],
       };
     default:
       return state;
