@@ -1,68 +1,53 @@
+# Dept Technical Test - React
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Development Setup
+```
+# install deps
+yarn install
 
-In the project directory, you can run:
+# build dist files
+yarn build
 
-### `yarn start`
+# serve examples at localhost:3000
+yarn start
+```
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Decisions
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Axios
 
-### `yarn test`
+I've used axios to make HTTP requests vs other options such as fetch mainly as its a popular well supported library that has better browser support than alternative such as the Fetch API.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+In larger applications I would pull the API calls out into a seperate API service file, however as this app is relatively small I saw moving this out of the actions unneccessary.
 
-### `yarn build`
+### MomentJs
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+I've choosen to use moment.js as a date time framework for managing and manipulating dates. JS dates can be scary and trying to format them youself often leads to issues futher down the line, hence why this frameworks exist.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Moment.js was chosen vs. other newer datetime frameworks for reasons similar to picking Axios, it is well supported, well documented and I have previous experience with using the framework.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+In future depending on the purposes of the application, I would review moment's packages as moment.locale.js is included, a fairy chunky package that allows for different date formats from different countries. This may not be needed as the build spec references cities in the United Kingdom.
 
-### `yarn eject`
+### Redux
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+I've used redux as a state management library to help me manage state across containers and components throughout the app. Other options are available such as Mobx but again, Redux is one of the most popular and I have previous experience using it.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### ESLint
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+I've decided to use the super strict AirBnB config with ESLint for code linting on this project. Although I don't agree with every rule I felt it one of the most recognised and personally like a consistent code style.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Container Pattern
 
-## Learn More
+In this app I've used the container pattern when building components. This allows for separation of concerns. The container component is worried about how things work, while the presentation component worries about how things look; this separation opens up the possibility of component re-use in the future.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Cities API Call
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+I opted to call the cities API to get a list of cities on component mount. The alternative would have been to call the API when the search input changed and let the back-end do the filtering. However this would result in multiple API calls per searched city, and wouldn't be as quick as filtering client side.
 
-### Code Splitting
+## Recommendations &amp; notes
+While coding this app I have had some thoughts and feedback. But didn't want to action them as I wanted to stick to the spec & design.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+1. Knowing the context of the app would potentially change my approach. Some of the CSS rules assume this is a full screen app and height and width is set to 100% to achieve a full screen gradient. However if this app was to put as part of a section within a webpage, then this would need to change.
+2. The autocomplete dropdown pushes other elements down the page when the results from the filtered cityies change. Personally I think I'd prefer it if this didn't and instead overflowed elements below where necessary. At the moment the pinned results jump around the page when you type into the search box.
