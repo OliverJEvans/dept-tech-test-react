@@ -7,12 +7,18 @@ import { REMOVE_PINNED_LOCATION } from '../../redux/reducers/airQualityRedux';
 const ResultConnected = ({
   pinnedResults,
   unPinResult,
+  loadingPinnedResults,
 }) => (
-  <Results pinnedResults={pinnedResults} handleClose={unPinResult} />
+  <Results
+    pinnedResults={pinnedResults}
+    handleClose={unPinResult}
+    loadingPinnedResults={loadingPinnedResults}
+  />
 );
 
 const mapStateToProps = (state) => ({
   pinnedResults: state.airQuality.pinnedResults,
+  loadingPinnedResults: state.airQuality.loadingPinnedResults,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -24,12 +30,14 @@ const mapDispatchToProps = (dispatch) => ({
 
 ResultConnected.defaultProps = {
   pinnedResults: [],
+  loadingPinnedResults: false,
 };
 
 ResultConnected.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   pinnedResults: PropTypes.array,
   unPinResult: PropTypes.func.isRequired,
+  loadingPinnedResults: PropTypes.bool,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ResultConnected);

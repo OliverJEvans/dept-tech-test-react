@@ -13,6 +13,7 @@ const DEFAULT_STATE = {
   cities: [],
   pinnedResults: [],
   searchedCity: '',
+  loadingPinnedResults: false,
 };
 
 export default function WeatherRedux(state, action) {
@@ -42,14 +43,18 @@ export default function WeatherRedux(state, action) {
     case GET_QUALITY_REQUEST:
       return {
         ...state,
+        searchedCity: '',
+        loadingPinnedResults: true,
       };
     case GET_QUALITY_FAILURE:
       return {
         ...state,
+        loadingPinnedResults: false,
       };
     case GET_QUALITY_SUCCESS:
       return {
         ...state,
+        loadingPinnedResults: false,
         pinnedResults: [...state.pinnedResults, action.result],
       };
     case REMOVE_PINNED_LOCATION:

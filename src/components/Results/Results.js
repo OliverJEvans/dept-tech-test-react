@@ -6,6 +6,7 @@ import './Results.scss';
 const Results = ({
   pinnedResults,
   handleClose,
+  loadingPinnedResults,
 }) => {
   const earliestDate = (measurements) => {
     // eslint-disable-next-line max-len
@@ -60,18 +61,31 @@ const Results = ({
           </div>
         </li>
       ))}
+      {loadingPinnedResults && (
+        <li className="results__item results__item--loading">
+          <div className="item">
+            <p className="timestamp" />
+            {/* eslint-disable-next-line jsx-a11y/heading-has-content */}
+            <h2 className="heading" />
+            <p className="location" />
+            <p className="measurements" />
+          </div>
+        </li>
+      )}
     </ul>
   );
 };
 
 Results.defaultProps = {
   pinnedResults: [],
+  loadingPinnedResults: false,
 };
 
 Results.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   pinnedResults: PropTypes.array,
   handleClose: PropTypes.func.isRequired,
+  loadingPinnedResults: PropTypes.bool,
 };
 
 export default Results;
