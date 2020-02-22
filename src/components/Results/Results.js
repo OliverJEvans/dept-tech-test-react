@@ -5,6 +5,7 @@ import './Results.scss';
 
 const Results = ({
   pinnedResults,
+  handleClose,
 }) => {
   const earliestDate = (measurements) => {
     // eslint-disable-next-line max-len
@@ -49,7 +50,13 @@ const Results = ({
                 </span>
               </strong>
             </p>
-            <button type="button" className="closeBtn"><span>Close</span></button>
+            <button
+              type="button"
+              className="closeBtn"
+              onClick={() => handleClose(result)}
+            >
+              <span>Close</span>
+            </button>
           </div>
         </li>
       ))}
@@ -64,6 +71,7 @@ Results.defaultProps = {
 Results.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   pinnedResults: PropTypes.array,
+  handleClose: PropTypes.func.isRequired,
 };
 
 export default Results;

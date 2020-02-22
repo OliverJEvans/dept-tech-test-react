@@ -5,6 +5,7 @@ export const SET_SEARCHED_CITY = 'SET_SEARCHED_CITY';
 export const GET_QUALITY_REQUEST = 'GET_QUALITY_REQUEST';
 export const GET_QUALITY_SUCCESS = 'GET_QUALITY_SUCCESS';
 export const GET_QUALITY_FAILURE = 'GET_QUALITY_FAILURE';
+export const REMOVE_PINNED_LOCATION = 'REMOVE_PINNED_LOCATION';
 
 const DEFAULT_STATE = {
   loadingCities: false,
@@ -50,6 +51,14 @@ export default function WeatherRedux(state, action) {
       return {
         ...state,
         pinnedResults: [...state.pinnedResults, action.result],
+      };
+    case REMOVE_PINNED_LOCATION:
+      return {
+        ...state,
+        pinnedResults: [
+          ...state.pinnedResults.slice(0, state.pinnedResults.indexOf(action.result)),
+          ...state.pinnedResults.slice(state.pinnedResults.indexOf(action.result) + 1),
+        ],
       };
     default:
       return state;
