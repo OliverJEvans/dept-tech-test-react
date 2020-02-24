@@ -2,6 +2,7 @@
   "name": "dept-tech-test-react",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/demo/dept-tech-test-react",
   "dependencies": {
     "axios": "^0.19.2",
     "clsx": "^1.1.0",
