@@ -16,12 +16,16 @@ const Search = ({
     })}
     >
       <div className="input__wrapper">
-        <input
-          type="search"
-          className="input"
-          placeholder="Enter city name..."
-          onChange={handleChange}
-        />
+        <label htmlFor="city-search">
+          <span className="visually-hidden">City name:</span>
+          <input
+            id="city-search"
+            type="search"
+            className="input"
+            placeholder="Enter city name..."
+            onChange={handleChange}
+          />
+        </label>
       </div>
       {searchedCity !== '' && (
         <ul className="search__results">
