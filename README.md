@@ -50,4 +50,4 @@ I opted to call the cities API to get a list of cities on component mount. The a
 While coding this app I have had some thoughts and feedback. But didn't want to action them as I wanted to stick to the spec & design.
 
 1. Knowing the context of the app would potentially change my approach. Some of the CSS rules assume this is a full screen app and height and width is set to 100% to achieve a full screen gradient. However if this app was to put as part of a section within a webpage, then this would need to change.
-2. The autocomplete dropdown pushes other elements down the page when the results from the filtered cityies change. Personally I think I'd prefer it if this didn't and instead overflowed elements below where necessary. At the moment the pinned results jump around the page when you type into the search box.
+2. The autocomplete dropdown pushes other elements down the page when the results from the filtered cities change. Personally I think I'd prefer it if this didn't and instead overflowed elements below where necessary. At the moment the pinned results jump around the page when you type into the search box.
