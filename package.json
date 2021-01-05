@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "/demo/dept-tech-test-react",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "clsx": "^1.1.0",
     "moment": "^2.24.0",
     "node-sass": "^4.13.1",
